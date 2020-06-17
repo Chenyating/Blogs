@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- 移动相机的位置-->
+    <meta charset="UTF-8">
+    <title>WebGL中文网</title>
+    <script src="https://cdn.bootcss.com/three.js/r81/three.js"></script>
+    <script src="https://cdn.bootcss.com/stats.js/r11/Stats.min.js"></script>
+    <script src="https://cdn.bootcss.com/tween.js/r13/Tween.js"></script>
+    <style type="text/css">
+        div#canvas-frame {
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            height: 600px;
+            background-color: #EEEEEE;
+        }
+
+    </style>
+    <script>
+        /*
+        * 围绕某个 x,y,z轴测试
+        */
+
+
+        var renderer;
+        var stats;
+
+        function initThree() {
+            width = document.getElementById('canvas-frame').clientWidth;
+            height = document.getElementById('canvas-frame').clientHeight;
+            renderer = new THREE.WebGLRenderer({
+                antialias: true
+            });
+            renderer.setSize(width, height);
+            document.getElementById('canvas-frame').appendChild(renderer.domElement);
+            renderer.setClearColor(0xFFFFFF, 1.0);
+
+            stats = new Stats();
+            stats.domElement.style.position = 'absolute';
+            stats.domElement.style.left = '0px';
+            stats.domElement.style.top = '0px';
+            document.getElementById('canvas-frame').appendChild(stats.domElement);
+        }
+
+        var camera;
+
+        function initCamera() {
+            camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
+            camera.position.x = 100;
+            camera.position.y = 800;
+            camera.position.z = 800;
+            camera.up.x = 0;
+            camera.up.y = 5;
+            camera.up.z = 0;
+            camera.lookAt({
+                x: 0,
+                y: 0,
+                z: 0
+            });
+        }
+
+        var scene;
+
+        function initScene() {
+            scene = new THREE.Scene();
+        }
+
+        var light;
+
+        function initLight() {
+            light = new THREE.AmbientLight(0xFF0000);
+            light.position.set(100, 100, 100);
+            scene.add(light);
+
+        }
+
+        var cube;
+        var mesh;
+
+        function initObject() {
+
+            var geometry = new THREE.BoxGeometry(100, 100, 100);
+            // geometry中有一个face成员，用来存储这个Geometry包含的面。每个面(face)有一个color属性，表示这个面的颜色。
+            for (var i = 0; i < geometry.faces.length; i += 2) {
+                // 将Geometry中的每两个面赋予随机的一种颜色
+                var hex = Math.random() * 0xffffff;
+                geometry.faces[i].color.setHex(hex);
+                geometry.faces[i + 1].color.setHex(hex);
+
+            }
+
+            var material = new THREE.MeshBasicMaterial({vertexColors: THREE.FaceColors});
+            mesh = new THREE.Mesh(geometry, material);
+            mesh.position = new THREE.Vector3(0, 0, 0);
+            scene.add(mesh);
+
+
+        }
+
+        // 1、var helper = new THREE.GridHelper( 1000, 50 )这一行，生成了一个网格模型，边长为1000，大网格中有小网格，小网格的边长是50.
+        // 2、网格线的颜色一头是0x0000ff，另一头是0x808080。线段中间的颜色取这两个颜色的插值颜色。
+        function initGrid() {
+            var helper = new THREE.GridHelper(1000, 50);
+            helper.setColors(0x0000ff, 0x808080);
+            scene.add(helper);
+        }
+
+        function threeStart() {
+            initThree();
+            initCamera();
+            initScene();
+            initLight();
+
+
+            initObject();
+            initGrid();
+
+            animation();
+
+        }
+
+        // 帧循环、游戏循环
+        function animation() {
+            mesh.rotation.y += 0.01;
+            mesh.rotation.z += 0.01;
+
+            renderer.render(scene, camera);
+            requestAnimationFrame(animation);
+
+        }
+
+    </script>
+</head>
+
+<body onload="threeStart();">
+<div style="margin-left:150px;">
+    <p>课前准备，绘制一个立方体和一个网格线</p>
+</div>
+<div id="canvas-frame"></div>
+</body>
+</html>

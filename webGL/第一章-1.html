@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+        canvas {
+            width: 100%;
+            height: 100%
+        }
+    </style>
+    <script src="http://www.yanhuangxueyuan.com/3D/example/three.min.js"></script>
+</head>
+
+<body>
+    <script>
+        // 创建场景
+        var scene = new THREE.Scene();
+        // 创建相机
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        // 创建渲染器
+        var renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        var light = new THREE.PointLight( 0xff0000,1,20 );
+
+        scene.add( light );
+        // 创建一个立方体；
+        var geometry = new THREE.CubeGeometry(1, 2, 3);
+        var material = new THREE.MeshBasicMaterial({ color: 0xC7FFEC });
+        var cube = new THREE.Mesh(geometry, material); scene.add(cube);
+        camera.position.z = 10;
+        function render() {
+            requestAnimationFrame(render);
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.1;
+            // 渲染应该使用渲染器，结合相机和场景来得到结果画面。实现这个功能的函数是
+            renderer.render(scene, camera);
+            // 渲染函数的原型如下：
+            // render(scene, camera, renderTarget, forceClear)
+            // 各个参数的意义是：
+            // scene：前面定义的场景
+            // camera：前面定义的相机
+            // renderTarget：渲染的目标，默认是渲染到前面定义的render变量中
+            // forceClear：每次绘制之前都将画布的内容给清除，即使自动清除标志autoClear为false，也会清除。
+        }
+        render();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+        canvas {
+            width: 100%;
+            height: 100%
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/three.js/r83/three.js"></script>
+    <script src="http://www.wjceo.com/lib/js/libs/stats.min.js"></script>
+    <script src="https://cdn.bootcss.com/dat-gui/0.7.1/dat.gui.min.js"></script>
+
+</head>
+
+<body onload="init()">
+    <script>
+        // 创建一个对象，在里面设置我们需要修改的一些数据。
+        var controls = {
+            positionX:0,
+            positionY:0,
+            positionZ:0
+        };
+        // 实例化dat.GUI对象，将需要修改的配置添加对象中，并监听变化回调。
+        var gui = new dat.GUI();
+        gui.add(controls, "positionX", -10, 10).onChange(updatePosition).name("xxxxx");
+        gui.add(controls, "positionY", -10, 10).onChange(updatePosition);
+        gui.add(controls, "positionZ", -80, 10).onChange(updatePosition);
+
+        function updatePosition() {
+            mesh.position.set(controls.positionX, controls.positionY, controls.positionZ);
+        }
+        //性能检测框
+        var stats;
+        function initStats() {
+            stats = new Stats();
+            document.body.appendChild(stats.dom);
+        }
+        //初始化渲染器
+        var render;
+        function initRenderer() {
+            renderer = new THREE.WebGLRenderer(); //实例化渲染器
+            renderer.setSize(window.innerWidth, window.innerHeight); //设置宽和高
+            document.body.appendChild(renderer.domElement); //添加到dom
+        }
+        //初始化相机
+        var camera;
+        function initCamera() {
+            camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 200); //实例化相机
+            camera.position.set(0, 0, 15);
+        }
+        //初始化场景
+        var scene;
+        function initScene() {
+            scene = new THREE.Scene(); //实例化场景
+        }
+        //创建模型
+        var geometry,material,mesh;
+        function initMesh() {
+            geometry = new THREE.BoxGeometry( 2, 2, 2 ); //创建几何体
+            material = new THREE.MeshPhongMaterial({color:0x00ffff}); //创建材质
+            material.metalness = 0.1; //设置的值的范围为0-1，值越小，材质越光滑，高光越明显
+            material.metalnessMap = 0.1; //设置的值的范围为0-1，值越大，越有生锈金属的质感，值越小反光越清晰
+
+            mesh = new THREE.Mesh( geometry, material ); //创建网格
+            scene.add( mesh ); //将网格添加到场景格添加到场景
+        }
+        function animate() {
+            mesh.rotation.x += 0.01; //每帧网格模型的沿x轴旋转0.01弧度
+            renderer.render( scene, camera ); //渲染界面
+            stats.update(); //更新性能插件
+            requestAnimationFrame(animate); //循环调用函数
+        }
+        //创建灯光
+        function initLight() {
+            var light = new THREE.DirectionalLight(0xffffff); //添加了一个白色的平行光
+            light.position.set(20, 50, 50); //设置光的方向
+            scene.add(light); //添加到场景
+
+            //添加一个全局环境光
+            scene.add(new THREE.AmbientLight(0x222222));
+        }
+        //初始化函数，页面加载完成是调用
+        function init() {
+            initRenderer();
+            initScene();
+            initCamera();
+            initMesh();
+            initLight();
+            initStats();
+            animate();
+        }
+    </script>
+</body>
+
+</html>
