@@ -1,4 +1,8 @@
 # ES6笔记
+
+## 声明变量方法
+var、function、let、const、import、class；
+
 ## proxy
 ```js
 const hd={name:'hello'}
@@ -20,23 +24,6 @@ proxy.name='ting'
 typeof 返回值： string，number,boolean,undefined,object,function
 
 es6 ECMscript 规范
-## let、const
-- 1、声明变量
-
-## const 
-- 声明一个只读的`常量`，一旦声明，常量的值就不能改变
-- 一定初始化，不能只声明不赋值
-- 数组和对象可以添加对应的值。
-```js
-const obj={}
-obj.name="hello"
-//如果不想让改变name的话
-// 就使用freez方法
-window.frees
-
-const arr=[];
-arr.push(1);
-```
 
 ## set、map数据结构
 无序不重复
