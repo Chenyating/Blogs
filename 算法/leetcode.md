@@ -1,4 +1,39 @@
 # leetcode题目
+## url化
+```js
+var replaceSpaces = function(S, length) {
+    var str = String.prototype.split.call(S, '').slice(0, length).join('');
+    // 转成数组，截取指定长度，连接；
+    var str = String.prototype.replace.call(str, /\s/g, '%20')
+    return str
+};
+```
+
+## 是否互为字符重排
+输入: s1 = "abc", s2 = "bca"
+
+输出: true 
+```js
+var CheckPermutation = function(s1, s2) {
+    var a1 = String.prototype.split.call(s1, '');
+    var a2 = String.prototype.split.call(s2, '');
+    while (a1.length > 0) {
+        for (let j = 0; j < a2.length; j++) {
+            if (a1[0] == a2[j]) {
+                a2.splice(j, 1);
+                break;
+            }
+        }
+        a1.shift();
+    }
+    if (a2.length ==0) {
+        return true;
+    } else {
+        return false;
+    }
+
+};
+```
 
 ## IP地址无效化
 输入：address = "1.1.1.1"
