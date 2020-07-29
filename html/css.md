@@ -1,5 +1,27 @@
 # css 笔记
 
+## sass for
+```scss
+@for $i from 1 through 3{
+   .item-#{$i}{
+      width:(20px*$i);
+   }
+}
+//  编译后
+.item-1
+{
+    width:20px;
+}
+.item-2
+{
+    width:40px;
+}
+.item-3
+{
+    width:60px;
+}
+```
+
 ## 浮动float
 让元素以某一个方向在一行并排排列；能让元素`脱离标准流`,既可以设置框，有可以一行排列；
 
@@ -179,3 +201,5 @@ css：
 - ::after 在元素内容的最后面添加新内容。
 - ::selection匹配用户被用户选中或者处于高亮状态的部分。
 - ::placeholder匹配占位符的文本，只有元素设置了placeholder属性时，该伪元素才能生效。
+
+
