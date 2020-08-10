@@ -1,5 +1,98 @@
 # css 笔记
 
+## 权重
+1. ! important	无穷
+2. 行间样式	1000
+3. id	100
+4. class/属性选择器/伪类:hover	10
+5. 标签选择器/伪元素:after	1
+6. 通配符	0
+
+## margin问题
+相邻的两个div都有margin；二者之间的距离是取最大的margin值；
+
+1. margin：5px 2px 5px==> 上 右左 下
+
+2. margin：5px 2px 4px 5px==> 上 右 下 左
+
+3. margin： 5px 6px ==> 上下 右左
+
+## 单位
+
+### 相对长度
+1. em :相对于应用在当前元素的字体尺寸
+2. ex:依赖于英文字母小 x 的高度
+3. ch:数字 0 的宽度
+4. rem:相对于根元素字体大小；
+5. vw:viewpoint width，视窗宽度，1vw=视窗宽度的1%
+6. vh:viewpoint height，视窗高度，1vh=视窗高度的1%
+7. vmin:	vw和vh中较小的那个
+8. vmax：vw和vh中较大的那个
+
+### 绝对长度
+1. cm厘米
+2. mm毫米
+3. in英寸
+4. px像素
+5. pt pint
+6. pc pica
+
+## css函数
+
+### var()调用变量
+
+
+### calc()
+calc() 函数用于`动态计算长度值`。
+
+需要注意的是，`运算符前后都需要保留一个空格`，例如：width: calc(100% - 10px)；
+
+任何长度值都可以使用calc()函数进行计算；
+
+calc()函数支持 "+", "-", "*", "/" 运算；
+
+calc()函数使用标准的数学运算优先级规则；
+
+### attr()
+返回选择元素的属性；
+```html
+<p><a href="//www.runoob.com" cc='dd'>yating</a></p>
+```
+```css
+a:after {content: " (" attr(cc) ")";}
+```
+
+```view
+yating dd
+```
+
+### cubic-bezier(p0,p1,p2,p3)
+定义了一个贝塞尔曲线(Cubic Bezier)。
+
+一般用在动画时间transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+
+### 颜色方法
+1. hsl()；
+2. hsla();
+3. rgb();
+4. rgba();
+
+### 渐进方法
+1. linear-gradient():线性
+2. radial-gradient()：经向
+3. repeating-linear-gradient()：重复线性
+4. repeating-radial-gradient()：重复径向
+
+## div 宽比高1:4
+```css
+.item-img {
+    position: relative;
+    padding-top: calc(1 / 4 * 100%);
+    margin-bottom: 8px;
+}
+```
+单个div可以用vh，vw；
+
 ## sass for
 ```scss
 @for $i from 1 through 3{

@@ -1,5 +1,17 @@
 # 阿里云mysql配置
 
+ - 卸载：https://blog.csdn.net/qq_39470733/article/details/80999080
+ 
+ mysql不知道被我卸载多少回了。重装了多少次。
+
+ - 安装：https://www.cnblogs.com/wangshen31/p/9556804.html
+
+ 阿里云上装mysql的步骤，一个晚上能重复好多好多遍。忧伤。。。。
+
+ - 远程连接：https://blog.csdn.net/qq_39781497/article/details/81302950
+
+ 远程连接阿里云的数据库是有安全组策略，需要自己去手动操作一下。
+
 ## 卸载
 1. 首先，查看系统是否已经安装了mysql数据库
 
