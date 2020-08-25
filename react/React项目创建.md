@@ -112,3 +112,33 @@ npm install react-router-dom --save
 ```
 npm install react-router
 ```
+
+## 扩展webpack配置
+
+- 暴露配置文件
+```
+npm run eject
+```
+
+- 使用react-app-rewired对webpack进行自定义配置
+```
+npm install react-app-rewired --save-dev
+```
+
+修改package.json的脚本命令
+```
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-app-rewired eject"
+  }
+```
+
+在项目根目录下新建config-overrides.js
+```js
+module.exports = function override(config, env) {
+    // 在这里添加配置
+    return config;
+}
+```
