@@ -4,58 +4,58 @@
 
 ## 举个例子
 当一个立方体在空间中，从我们的认知中,一般会是以下几个状态。
-![img](../img/立方体.png)
+<img src="/img/article/立方体.png"/>
 
 但实际上远远不止于这几种状态。
 
-![img](../img/立方体.gif)
+<img src="/img/article/立方体.gif"/>
 
 截取每一瞬间的图片就会有以下各种形态。
-![img](../img/cube-1.png)
-![img](../img/cube-2.png)
+<img src="/img/article/cube-1.png"/>
+<img src="/img/article/cube-2.png"/>
 其实一个立方体在平面中有无数个形态。不断的去渐进变化形态，就会给予人3d的氛围感。
 
 ## 3d效果原理
 想象我们在一个3维的空间中去观察一个旋转的立方体
-![img](../img/cube-rorate.gif)
+<img src="/img/article/cube-rorate.gif"/>
 
 空间中的立方体是立体的，但而人眼观察到的立方体是在zx平面上。现在我们再将立方体缩小至一个非常非常小的原点，改变一下直角坐标系的方向。将人移动到Z轴上。
-![img](../img/cube-4.png)
+<img src="/img/article/cube-4.png"/>
 
 - 将人观察的点定义为V:（Vx,Vy,Vz）
 - 将观察的点定义为：B:（x,y,z）
 - 从人眼V点观察B点映射到的zx平面上的点为P（Px,Py,Pz）
 
 不妨试着将B点沿着y轴画一道垂直线得到交于y轴的f点
-![img](../img/cube-5.png)
+<img src="/img/article/cube-5.png"/>
 
 这时候我们就会发现三角形VFB与三角形VOP有这相似三角形的关系。
-![img](../img/cube-6.png)
+<img src="/img/article/cube-6.png"/>
 
 他们的边长存在等比关系，那么我们就可以得到以下的公式。
-![img](../img/fnc-1.png)
+<img src="/img/article/fnc-1.png"/>
 
 我们最终的目的是为了得到3d物体映射在平面上的2d点坐标。所以我们需要求得与P（Px,Py,Pz）相关的值。
-![img](../img/fnc-2.png)
+<img src="/img/article/fnc-2.png"/>
 
 经过一步步推算得到：
-![img](../img/fnc-3.png)
+<img src="/img/article/fnc-3.png"/>
 
 最后我们将坐标值带入到公式中，就可以得到PO的值，即Py坐标值为
-![img](../img/fnc-4.png)
+<img src="/img/article/fnc-4.png"/>
 
 同理我们再将B点放置在ZX平面上观察，链接b点垂直到z轴上，也出现了两个相似三角形。
-![img](../img/cube-7.png)
+<img src="/img/article/cube-7.png"/>
 
 我们只需要将y相关的值改变为x就可以得到映射在XY面的Px坐标
-![img](../img/fnc-5.png)
+<img src="/img/article/fnc-5.png"/>
 
 ### 结论
 那么任意个3维空间的点，映射在xy平面上就可以得到公式：
-![img](../img/cube-8.png)
+<img src="/img/article/cube-8.png"/>
 
 在xy平面上，z坐标上的值则为0；由此我们可以得到一个任何一个点在三位空间中映射到xy面上的坐标值。
-![img](../img/fnc-6.png)
+<img src="/img/article/fnc-6.png"/>
 
 ## 绘制以个立方体
 
@@ -85,10 +85,10 @@ visual: {
 },
 ```
 根据数学上的坐标直角系，我们先取在负Z轴上观察。
-![img](../img/cube-9.png)
+<img src="/img/article/cube-9.png"/>
 
 已知我们得到任意空间一点映射到XY面上的坐标
-![img](../img/fnc-6.png)
+<img src="/img/article/fnc-6.png"/>
 
 所以我们就可以写出一个方法来：
 ```js
@@ -137,11 +137,11 @@ draw() {
 }
 ```
 我们就可以得到以下的平面立方体图
-![img](../img/cube-10.png)
+<img src="/img/article/cube-10.png"/>
 
 ## 绘制旋转立方体
 
-![img](../img/立方体.gif)
+<img src="/img/article/立方体.gif"/>
 
 要看清一个立方体的全貌，我们一般有两种方式
 
@@ -149,15 +149,15 @@ draw() {
 - 围绕立方体观察
 
 ### 方体自转观察
-![img](../img/cube-rorate-1.gif)
+<img src="/img/article/cube-rorate-1.gif"/>
 
 我们将立方体放置在y轴上旋转。
-![img](../img/cube-rorate-2.gif)
+<img src="/img/article/cube-rorate-2.gif"/>
 
 取立方体其中的某一点，绕着y轴旋转。以俯视向下看就是这样的图
-![img](../img/cube-12.png)
+<img src="/img/article/cube-12.png"/>
 
-![img](../img/cube-13.png)
+<img src="/img/article/cube-13.png"/>
 已知D的坐标为（x,y），根据三角形正弦定理,我们可以知道Rsinα就是旋转之前D点的z坐标，Rcosα就是旋转之前D点的x坐标
 
 那么
@@ -200,12 +200,12 @@ changeself() {
 },
 ```
 我们就可以看到旋转的立方体：
-![img](../img/cube-rorate-3.gif)
+<img src="/img/article/cube-rorate-3.gif"/>
 
 但是现在看起来还是优点儿奇怪，那是因为，现在的立方体是绕着y轴旋转，所以，左侧我们就看不到立方体了。
 
 我们的想法是希望立方体能自己在我们面前旋转。
-![img](../img/cube-rorate-4.gif)
+<img src="/img/article/cube-rorate-4.gif"/>
 
 立方体就必须以中心自转，所以我们需要确定立方体的中心点
 ```js
@@ -240,11 +240,11 @@ changeself() {
 },
 ```
 最后我们就可以看到旋转的立方体了
-![img](../img/立方体.gif)
+<img src="/img/article/立方体.gif"/>
 
 ### 绕立方体自转观察
 现在我们可以看看另一种方法，我们绕着立方体中心旋转看立方体，简而言之就是改变视角。
-![img](../img/cube-11.png)
+<img src="/img/article/cube-11.png"/>
 
 稍微修改一下自转的方法
 ```js
@@ -271,10 +271,10 @@ changeself() {
     })
 },
 ```
-![img](../img/cube-rorate-5.gif)
+<img src="/img/article/cube-rorate-5.gif"/>
 
 红色的圆圈是绕着y轴旋转的视角，在空间中看到的立方体，有一段区域是无法映射到xy面上，在零界点的时候开始出现一道特别长的形状的立方体图案。
-![img](../img/cube-16.png)
+<img src="/img/article/cube-16.png"/>
 
 即便我们将视角绕着立方的中心点去改变视角也是同样的效果
 ```js
@@ -301,16 +301,16 @@ changeVisual() {
         })
 },
 ```
-![img](../img/cube-rorate-6.gif)
+<img src="/img/article/cube-rorate-6.gif"/>
 
 红色圈圈就是我们绕着立方体中心的视角变化。有一部分区域立方体是映射到-xy轴面上。
-![img](../img/cube-15.png)
+<img src="/img/article/cube-15.png"/>
 
 ### 结论
 所以想要绘制3d的旋转效果，我们一般都是沿着物体中心去自转。
 
 奉上所有代码
-```js
+```html
 <!DOCTYPE html>
 <html>
 
@@ -467,26 +467,26 @@ changeVisual() {
 
 ### 举个很常见的例子
 在很多页面中，我们常常会看到这样的图。
-![img](../img/demo-1.gif)
+<img src="/img/article/demo-1.gif"/>
 
 将它拆解一下：
-![img](../img/demo-2.png)
+<img src="/img/article/demo-2.png"/>
 个点运动起来：
-![img](../img/demo-3.gif)
+<img src="/img/article/demo-3.gif"/>
 曲线绕着中心点旋转：
-![img](../img/demo-4.gif)
+<img src="/img/article/demo-4.gif"/>
 最后多绘制几个条曲线：
-![img](../img/demo-1.gif)
+<img src="/img/article/demo-1.gif"/>
 
 ### 做个demo
 结合这样的思路，我们就可以做出其他的3d效果的动画。
 
 平面中的几个小球绕着空间某点旋转：
-![img](../img/demo-5.gif)
+<img src="/img/article/demo-5.gif"/>
 平面连接的小球：
-![img](../img/demo-6.gif)
+<img src="/img/article/demo-6.gif"/>
 空间连接旋转的小球：
-![img](../img/demo-7.gif)
+<img src="/img/article/demo-7.gif"/>
 
 结合自转的方法，以及获取空间映射xy点的方法，可以帮助你绘制各种各种个样的效果。
 ```js

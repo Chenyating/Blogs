@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "../../../../project"
+		},
+		{
+			"path": "../../../share-code"
+		},
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../ART-QRCode"
+		},
+		{
+			"path": "../../../qrcode"
+		},
+		{
+			"path": "../../../cocos/cocos-game-lesson"
+		}
+	],
+	"settings": {}
+}
