@@ -186,3 +186,23 @@ a大框设置grid，网格模式
     border-top-color:red;
 }
 ```
+
+## svg线性动画
+```css
+svg:hover path {
+  stroke-dasharray: 1744;
+  stroke-dashoffset: 1744;
+  animation: ing 1s linear both;
+  shape-rendering: crispEdges;
+   stroke:red;
+}
+
+@keyframes ing {
+  from {
+    stroke-dashoffset: 1744;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+```
