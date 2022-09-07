@@ -3,7 +3,7 @@
 ## 域名解析
 ```yarn
 记录类型:A
-主机记录:（）.yating.onlien
+主机记录:（）.yating.world
 解析线路：默认
 记录值：服务器ip
 TTL：10分钟
@@ -15,7 +15,7 @@ TTL：10分钟
 ```yarn
  server {
         listen       80;
-        server_name  h5.yating.online;
+        server_name  h5.yating.world;
 
         #charset koi8-r;
 

@@ -1,6 +1,6 @@
 # 把 http换成 https
 
-这是我现在的博客地址：https://www.yating.online/
+这是我现在的博客地址：https://www.yating.world/
 
 --- 
 
@@ -28,10 +28,10 @@
 ### 通用格式
 ```nginx
         listen  443 ssl;
-        server_name  yating.online;
+        server_name  yating.world;
         ssl_protocols TLSv1.2 TLSv1.1;
-        ssl_certificate  文件位置/www.yating.online.pem;
-        ssl_certificate_key  文件位置/www.yating.online.key;
+        ssl_certificate  文件位置/www.yating.world.pem;
+        ssl_certificate_key  文件位置/www.yating.world.key;
         ssl_session_timeout 600; #缓存有效时间10分钟，默认5m 5分钟
         ssl_protocols SSLv2 SSLv3 TLSv1; #支持的协议
         ssl_ciphers HIGH:+AES; #限定加密算法
@@ -40,7 +40,7 @@
 ## 强制http转为https
 
 ```nginx
-   #访问yaitng.online,强制http转为https
+   #访问yaitng.world,强制http转为https
     server {
         listen 80;
         server_name localhost;
@@ -92,10 +92,10 @@ http {
     server {
         listen       80;
         listen  443 ssl;
-        server_name  yating.online;
+        server_name  yating.world;
         ssl_protocols TLSv1.2 TLSv1.1;
-        ssl_certificate  文件位置/www.yating.online.pem;
-        ssl_certificate_key  文件位置/www.yating.online.key;
+        ssl_certificate  文件位置/www.yating.world.pem;
+        ssl_certificate_key  文件位置/www.yating.world.key;
         ssl_session_timeout 600; #缓存有效时间10分钟，默认5m 5分钟
         ssl_protocols SSLv2 SSLv3 TLSv1; #支持的协议
         ssl_ciphers HIGH:+AES; #限定加密算法
