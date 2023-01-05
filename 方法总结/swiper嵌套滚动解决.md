@@ -10,11 +10,21 @@
 1. 滚动间距要比儿子距离小
 2. 鼠标灵敏度要比儿子小
 
+```js
+mousewheel={{
+ sensitivity: 0.6,
+ thresholdDelta: 50
+}}
+```
 ## 儿子swiper：
 1. 添加属性nested=true；
 2. 滚动间距比父亲大
 
-
+```js
+mousewheel={{
+ thresholdDelta: 40
+}}
+```
 
 ## 父亲swiper事件设置：
 

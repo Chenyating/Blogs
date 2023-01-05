@@ -5,7 +5,7 @@
 ```js
 
 class Animal{
-    // 每一个类中都有一个构造器，若没有指定构造器，那么这个构造器是隐形的，构造器的作用，就是每当new一个类，必然优先执行构造器中的代码
+    // 每一个类中都有一个构造器,每当new一个类，必然优先执行构造器中的代码
     constructor(name,age){
         this.name=name;//通过new实例的属性，叫做实例属性：dog.name
         this.age=age;
@@ -13,11 +13,13 @@ class Animal{
     }
     // 在class内部通过static修饰的属性就是静态属性，例如Animal.info;
     static info="白色的";
+
     //动物的实例方法
-    say(){
+    say(){ //可以通过dog.say()来执行；
+        console.log(this)//this是这个类的实例
         console.log("汪汪~")
     }
-    //可以通过dog.say()来执行；
+   
     //动物的静态方法
     static show(){
         console.log("yellow body")
@@ -82,8 +84,7 @@ class Person{
 }
 
 // 在class中可以使用extends关键字实现子类继承父类；
-// 子类美国人
-class American extends Person{}
+class American extends Person{}// 子类美国人
 const a1=new American('hello',12);
 a1.sayhi();//报错, 数据没有传给父类
 ```
@@ -94,7 +95,8 @@ a1.sayhi();//报错, 数据没有传给父类
 ```js
 class American extends Person{
     constructor(name,age){
-        super(name,age);//调用父类的constructor
+        super(name,age);//必须先调用父类的constructor
+        //再执行子类的方法 
     }
 }
 const a1=new American('hello',12);
@@ -130,7 +132,13 @@ class Chinese extends Person{
         super(name,age);
         this.idNum=idNum;
     }
+    sayhi(){//已经重写父亲的sayhi了
+        console.log("hahah");
+    }
 }
+
+const a1=new American('hello',12);
+a1.sayhi();//hahah
 ```
 
 ### 面试题
