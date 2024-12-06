@@ -5,3 +5,4 @@
 停止nginx：brew services stop nginx
 重启nginx：brew services restart nginx
 查看nginx配置文件：sudo nginx -t
+重新加载：sudo nginx -s reload
